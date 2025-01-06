@@ -1,4 +1,4 @@
-name: "Release Tag"
+name: "Liquid-JS/release-tag"
 description: "Create a release on tag push"
 inputs:
   tag_name:
