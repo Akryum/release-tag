@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/Liquid-JS/fragql/compare/v4.1.0...v4.1.1) (2025-01-06)
+
+
+### Bug Fixes
+
+* action definition ([1eccfd7](https://github.com/Liquid-JS/fragql/commit/1eccfd78595c4cb71b4d6e4a93d41463a03bafbe))
+
 ## [4.1.0](https://github.com/Liquid-JS/fragql/compare/v4.0.7...v4.1.0) (2025-01-06)
 
 
