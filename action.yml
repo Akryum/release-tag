@@ -16,8 +16,8 @@ inputs:
     required: false
     default: false
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: "node22"
+  main: "lib/index.js"
 branding:
   icon: "tag"
   color: "gray-dark"
