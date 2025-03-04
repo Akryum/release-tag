@@ -7,6 +7,8 @@ This is a fork of [actions/create-release](https://github.com/actions/create-rel
 
 Usage:
 
+Enable Read/Write access for the default `GITHUB_TOKEN` in the repo Settings -> Actions.
+
 ```yaml
 name: Create release
 
