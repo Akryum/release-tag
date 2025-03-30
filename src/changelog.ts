@@ -1,9 +1,4 @@
-import {
-  getGitDiff,
-  parseCommits,
-  generateMarkDown,
-  loadChangelogConfig,
-} from 'changelogen'
+import { generateMarkDown, getGitDiff, loadChangelogConfig, parseCommits } from 'changelogen'
 
 export async function generateChangelog (cwd: string, from: string, newVersion: string) {
   const config = await loadChangelogConfig(cwd, {
@@ -25,7 +20,5 @@ export async function generateChangelog (cwd: string, from: string, newVersion: 
   console.log('Parsed commits:', commits)
 
   // Generate markdown
-  const markdown = await generateMarkDown(commits, config)
-
-  return markdown
+  return await generateMarkDown(commits, config)
 }
