@@ -5,7 +5,11 @@ import { generateChangelog } from './changelog.js'
 async function run() {
   try {
     // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
-    const github = new GitHub(process.env.GITHUB_TOKEN)
+    const token = process.env.GITHUB_TOKEN
+    if (!token) {
+      throw new Error('GITHUB_TOKEN is not set')
+    }
+    const github = new GitHub(token)
 
     // Get owner and repo from context of payload that triggered the action
     const { owner, repo } = context.repo
@@ -37,7 +41,11 @@ async function run() {
     console.log('Changelog body:')
     console.log(body)
     const draft = core.getInput('draft', { required: false }) === 'true'
-    const prerelease = /\d-[a-z]/.test(tag)
+    const prereleaseInput = core.getInput('prerelease', { required: false })
+    // Auto-detect prerelease from tag (e.g. v1.0.0-alpha) when input is not explicitly set
+    const prerelease = prereleaseInput !== ''
+      ? prereleaseInput === 'true'
+      : /\d-[a-z]/.test(tag)
 
     // Create a release
     // API Documentation: https://developer.github.com/v3/repos/releases/#create-a-release
@@ -51,7 +59,7 @@ async function run() {
       draft,
       prerelease,
     })
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }

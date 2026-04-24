@@ -7,17 +7,13 @@ inputs:
   release_name:
     description: 'The name of the release. For example, `Release v1.0.1`'
     required: false
-  preset:
-    description: "Conventional changelog preset. Possible values: 'angular', 'atom', 'codemirror', 'ember', 'eslint', 'express', 'jquery', 'jshint'"
-    required: false
   draft:
     description: '`true` to create a draft (unpublished) release, `false` to create a published one. Default: `false`'
     required: false
     default: false
   prerelease:
-    description: '`true` to identify the release as a prerelease. `false` to identify the release as a full release. Default: `false`'
+    description: '`true` to identify the release as a prerelease. `false` to identify the release as a full release. If not set, auto-detected from the tag name (e.g. `v1.0.0-alpha` → prerelease).'
     required: false
-    default: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
